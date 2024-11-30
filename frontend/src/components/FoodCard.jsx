@@ -21,9 +21,9 @@ const FoodCard = ({ item }) => {
       <Card sx={{ elevation: 3, "&:hover": { boxShadow: 6 } }}>
         <CardHeader
           avatar={
-            <Avatar aria-label="recipe" sx={{ bgcolor: "#fff" }}>
+            <IconButton aria-label="recipe" sx={{ bgcolor: "#fff" }}>
               <FavoriteBorderIcon sx={{ bgcolor: "#fff", color: "#D66400" }} />
-            </Avatar>
+            </IconButton>
           }
         />
         <CardMedia
@@ -43,18 +43,56 @@ const FoodCard = ({ item }) => {
         </CardContent>
         <CardActions
           disableSpacing
-          sx={{ display: "flex", justifyContent: "space-between" }}
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+          }}
         >
-          <IconButton aria-label="add to favorites">
-            <AccessTimeIcon sx={{ bgcolor: "#fff", color: "#D66400" }} />{" "}
+          <IconButton
+            aria-label="delivery time"
+            sx={{
+              fontSize: { xs: "12px", sm: "14px", md: "20px" },
+            }}
+          >
+            <AccessTimeIcon
+              sx={{
+                bgcolor: "#fff",
+                color: "#D66400",
+                fontSize: { xs: "12px", sm: "14px", md: "20px" },
+              }}
+            />
             {item.deliveryTime}
           </IconButton>
-          <IconButton aria-label="share">
-            <StarIcon sx={{ bgcolor: "#fff", color: "#D66400" }} />
+
+          <IconButton
+            aria-label="rating"
+            sx={{
+              fontSize: { xs: "12px", sm: "14px", md: "20px" },
+            }}
+          >
+            <StarIcon
+              sx={{
+                bgcolor: "#fff",
+                color: "#D66400",
+                fontSize: { xs: "12px", sm: "14px", md: "20px" },
+              }}
+            />
             {item.rating}
           </IconButton>
-          <IconButton>
-            <AddCircleOutlineIcon sx={{ bgcolor: "#fff", color: "#D66400" }} />
+
+          <IconButton
+            aria-label="add to cart"
+            sx={{
+              fontSize: { xs: "12px", sm: "14px", md: "20px" },
+            }}
+          >
+            <AddCircleOutlineIcon
+              sx={{
+                bgcolor: "#fff",
+                color: "#D66400",
+                fontSize: { xs: "12px", sm: "14px", md: "20px" },
+              }}
+            />
           </IconButton>
         </CardActions>
       </Card>
