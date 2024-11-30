@@ -11,20 +11,18 @@ import {
 } from "@mui/material";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
-const ForgetPassword = () => {
+const ForgetPasswordForm = () => {
   const navigate = useNavigate();
   const { isDarkMode, toggleDarkMode } = useDarkModeContext(); // Access dark mode state
   const [open, setOpen] = useState(false); // State to handle dialog visibility
 
   const handleOpen = () => {
     setOpen(true); // Show dialog
-    
   };
 
   const handleClose = () => {
     setOpen(false); // Hide dialog
-      navigate("/otp");
-  
+    navigate("/login");
   };
 
   const styles = {
@@ -84,7 +82,7 @@ const ForgetPassword = () => {
       backgroundColor: isDarkMode ? "#555" : "#fff",
       color: isDarkMode ? "#fff" : "#333",
     },
-    resetButton: {
+    sendButton: {
       width: "94%",
       padding: "10px",
       fontSize: "1rem",
@@ -111,18 +109,24 @@ const ForgetPassword = () => {
       <div style={styles.card}>
         <div style={styles.header}>
           <h2 style={styles.title}>Forgot Password</h2>
-          <p style={styles.subtitle}>Enter your email to reset your password</p>
+          <p style={styles.subtitle}>Please enter your new password</p>
         </div>
         <div style={styles.inputContainer}>
           <input
-            type="email"
-            placeholder="Enter your email"
+            type="password"
+            placeholder="New Password"
             style={styles.input}
           />
+          <input
+            type="password"
+            placeholder="Confirm Password"
+            style={styles.input}
+          />
+          <p>Password must be 8 character</p>
         </div>
         <div style={styles.actions}>
-          <button style={styles.resetButton} onClick={handleOpen}>
-            Reset Password
+          <button style={styles.sendButton} onClick={handleOpen}>
+            Send
           </button>
         </div>
       </div>
@@ -131,12 +135,8 @@ const ForgetPassword = () => {
       <Dialog open={open} onClose={handleClose}>
         <DialogContent style={{ textAlign: "center", padding: "20px" }}>
           <CheckCircleOutlineIcon style={styles.dialogIcon} />
-          <Typography variant="h6" gutterBottom>
-            Check Your Email
-          </Typography>
-          <Typography>
-            We have sent password recovery instructions to your email.
-          </Typography>
+
+          <Typography>Your resetting password is successfull</Typography>
         </DialogContent>
         <DialogActions style={{ justifyContent: "center" }}>
           <Button onClick={handleClose} style={{ color: "#ff6600" }}>
@@ -148,4 +148,4 @@ const ForgetPassword = () => {
   );
 };
 
-export default ForgetPassword;
+export default ForgetPasswordForm;

@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDarkModeContext } from "../../context/DarkModeContext"; // Import the context
 
 const SignIn = () => {
+  const navigate=useNavigate()
   const { isDarkMode, toggleDarkMode } = useDarkModeContext(); // Access dark mode state
 
   const handleModeChange = () => {
@@ -18,6 +19,7 @@ const SignIn = () => {
       setError("Please fill in both fields.");
     } else {
       setError(""); // Proceed with sign-in logic here
+      navigate("/home")
     }
   };
 
@@ -82,20 +84,7 @@ const SignIn = () => {
               Sign Up
             </Link>
           </div>
-          <div style={styles.orContainer}>
-            <p style={styles.text}>Or</p>
-          </div>
-          <div style={styles.googleButton}>
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"
-              alt="Google"
-              style={styles.googleIcon}
-            />
-          </div>
-          {/* Button to toggle dark mode */}
-          <button style={styles.toggleModeButton} onClick={handleModeChange}>
-            Toggle Dark Mode
-          </button>
+
         </div>
       </div>
     </div>
@@ -184,26 +173,7 @@ const styles = {
     fontSize: "0.9rem",
     color: "#888",
   },
-  orContainer: {
-    marginBottom: "15px",
-  },
-  googleButton: {
-    cursor: "pointer",
-  },
-  googleIcon: {
-    width: "30px",
-    height: "30px",
-  },
-  toggleModeButton: {
-    marginTop: "20px",
-    padding: "10px",
-    fontSize: "1rem",
-    color: "#fff",
-    backgroundColor: "#333",
-    border: "none",
-    borderRadius: "5px",
-    cursor: "pointer",
-  },
+ 
   // Responsive Design
   "@media (max-width: 768px)": {
     card: {
@@ -254,10 +224,7 @@ const styles = {
     text: {
       fontSize: "0.7rem",
     },
-    googleIcon: {
-      width: "25px",
-      height: "25px",
-    },
+
   },
 };
 

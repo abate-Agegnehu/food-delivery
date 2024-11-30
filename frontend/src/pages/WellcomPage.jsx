@@ -53,7 +53,7 @@ const styles = {
   containerLight: {
     fontFamily: "Arial, sans-serif",
     textAlign: "center",
-    backgroundColor: "#f9f9f9",
+    backgroundColor: "#fff",
     color: "#333",
     width: "100%",
     height: "100vh",
@@ -122,7 +122,6 @@ const styles = {
   image: {
     height: "100%",
     width: "100%",
-    objectFit: "cover",
     borderRadius: "10px",
   },
 };
