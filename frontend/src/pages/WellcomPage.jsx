@@ -89,7 +89,7 @@ const styles = {
   },
   icon: {
     fontSize: "40px",
-    color: "#FF6600",
+    color: "#D66400",
   },
   iconContainer: {
     display: "flex",

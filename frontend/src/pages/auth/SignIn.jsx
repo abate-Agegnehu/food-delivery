@@ -99,7 +99,7 @@ const styles = {
   },
   forget: {
     display: "flex",
-    color: "#ff6600",
+    color: "#D66400",
     textDecoration: "none",
     marginBottom: "10px",
   },
@@ -148,7 +148,7 @@ const styles = {
     padding: "10px",
     fontSize: "1rem",
     color: "#fff",
-    backgroundColor: "#ff6600",
+    backgroundColor: "#D66400",
     border: "none",
     borderRadius: "5px",
     cursor: "pointer",
@@ -173,7 +173,7 @@ const styles = {
     fontSize: "0.9rem",
     color: "#888",
   },
- 
+
   // Responsive Design
   "@media (max-width: 768px)": {
     card: {
@@ -224,7 +224,6 @@ const styles = {
     text: {
       fontSize: "0.7rem",
     },
-
   },
 };
 

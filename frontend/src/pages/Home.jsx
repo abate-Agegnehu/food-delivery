@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import InputAdornment from "@mui/material/InputAdornment";
 import ListIcon from "@mui/icons-material/List";
+import discountImage from "../assets/image/delivery.jpg";
 import {
   AppBar,
   Toolbar,
@@ -17,6 +18,7 @@ import {
   Grid,
   ToggleButtonGroup,
   ToggleButton,
+  Divider,
 } from "@mui/material";
 import {
   Menu as MenuIcon,
@@ -31,21 +33,25 @@ import {
 } from "@mui/icons-material";
 import FoodCard from "../components/FoodCard";
 import { useMediaQuery, useTheme } from "@mui/material";
+import PersonIcon from "@mui/icons-material/Person";
+import ReorderIcon from "@mui/icons-material/Reorder";
+import TryIcon from "@mui/icons-material/Try";
+import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 
 const Home = () => {
+  const theme = useTheme();
+  const isLargeScreen = useMediaQuery(theme.breakpoints.up("md"));
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [items, setItems] = useState([]);
   const [itemsType, setItemsType] = useState(["Breakfast", "Lunch", "Dinner"]);
   const [alignment, setAlignment] = useState("foods");
-  const [isFullWidth, setIsFullWidth] = useState(false); // State to control grid size
+  const [isFullWidth, setIsFullWidth] = useState(!isLargeScreen);
 
-  const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm")); // Check if screen is small
-
+  const [selectedItem, setSelectedItem] = useState(null);
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const toggleDrawer = () => {
     setDrawerOpen(!drawerOpen);
   };
-
   const foods = [
     {
       id: 1,
@@ -89,7 +95,10 @@ const Home = () => {
 
   useEffect(() => {
     setItems(foods);
-  }, []);
+    if (isLargeScreen) {
+      setIsFullWidth(false);
+    }
+  }, [isLargeScreen]);
 
   const handleChange = (event, newAlignment) => {
     if (newAlignment !== null) {
@@ -109,11 +118,12 @@ const Home = () => {
     setItemsType(drinkType);
   };
 
-  // Toggle grid size when list item is clicked
   const handleItemClick = () => {
     setIsFullWidth(!isFullWidth);
   };
-
+  const handleItemTypeClick = (item) => {
+    setSelectedItem(item);
+  };
   return (
     <div>
       <AppBar
@@ -134,7 +144,7 @@ const Home = () => {
         >
           <IconButton
             edge="start"
-            sx={{ color: "#FF6600" }}
+            sx={{ color: "#D66400" }}
             aria-label="menu"
             onClick={toggleDrawer}
           >
@@ -156,7 +166,7 @@ const Home = () => {
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <SearchIcon sx={{ color: "#FF6600" }} />
+                    <SearchIcon sx={{ color: "#D66400" }} />
                   </InputAdornment>
                 ),
                 style: {
@@ -166,7 +176,7 @@ const Home = () => {
             />
           </Box>
 
-          <IconButton sx={{ color: "#FF6600" }}>
+          <IconButton sx={{ color: "#D66400" }}>
             <NotificationsIcon />
           </IconButton>
         </Toolbar>
@@ -177,66 +187,133 @@ const Home = () => {
           <List>
             <ListItem button>
               <ListItemIcon>
-                <HomeIcon />
+                <HomeIcon sx={{ color: "#BA7300" }} />
               </ListItemIcon>
               <ListItemText primary="Home" />
             </ListItem>
             <ListItem button>
               <ListItemIcon>
-                <LocationOnIcon />
+                <PersonIcon sx={{ color: "#BA7300" }} />
               </ListItemIcon>
-              <ListItemText primary="Addresses" />
+              <ListItemText primary="Personal Info" />
             </ListItem>
             <ListItem button>
               <ListItemIcon>
-                <ShoppingCartIcon />
+                <LocationOnIcon sx={{ color: "#BA7300" }} />
+              </ListItemIcon>
+              <ListItemText primary="Addresses" />
+            </ListItem>
+            <Divider />
+            <ListItem button>
+              <ListItemIcon>
+                <ShoppingCartIcon sx={{ color: "#BA7300" }} />
               </ListItemIcon>
               <ListItemText primary="Cart" />
             </ListItem>
             <ListItem button>
               <ListItemIcon>
-                <FavoriteIcon />
+                <FavoriteIcon sx={{ color: "#BA7300" }} />
               </ListItemIcon>
               <ListItemText primary="Favorites" />
             </ListItem>
+
             <ListItem button>
               <ListItemIcon>
-                <PaymentIcon />
+                <NotificationsIcon sx={{ color: "#BA7300" }} />
+              </ListItemIcon>
+              <ListItemText primary="Notification" />
+            </ListItem>
+            <ListItem button>
+              <ListItemIcon>
+                <PaymentIcon sx={{ color: "#BA7300" }} />
               </ListItemIcon>
               <ListItemText primary="Payment Method" />
             </ListItem>
             <ListItem button>
               <ListItemIcon>
-                <SettingsIcon />
+                <ReorderIcon sx={{ color: "#BA7300" }} />
+              </ListItemIcon>
+              <ListItemText primary="My Orders" />
+            </ListItem>
+            <Divider />
+            <ListItem button>
+              <ListItemIcon>
+                <HelpOutlineIcon sx={{ color: "#BA7300" }} />
+              </ListItemIcon>
+              <ListItemText primary="FAQs" />
+            </ListItem>
+            <ListItem button>
+              <ListItemIcon>
+                <TryIcon sx={{ color: "#BA7300" }} />
+              </ListItemIcon>
+              <ListItemText primary="User Reviews" />
+            </ListItem>
+            <ListItem button>
+              <ListItemIcon>
+                <SettingsIcon sx={{ color: "#BA7300" }} />
               </ListItemIcon>
               <ListItemText primary="Settings" />
             </ListItem>
-            <ListItem button onClick={handleItemClick}>
-              {" "}
-              {/* Toggle grid size on item click */}
+            <Divider />
+            <ListItem>
               <ListItemIcon>
-                <LogoutIcon />
+                <LogoutIcon sx={{ color: "#BA7300" }} />
               </ListItemIcon>
               <ListItemText primary="Log Out" />
             </ListItem>
           </List>
         </Box>
       </Drawer>
+      <Box
+        sx={{
+          backgroundColor: "#fff",
+          borderRadius: "8px",
+          marginBottom: "16px",
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: { xs: "20px 0px", sm: "30px 0px" },
+          fontSize: { xs: "1.1em", sm: "1.5", md: "2em" },
+        }}
+      >
+        <img
+          style={{
+            width: "90%",
+            borderRadius: "40px",
+            height: isLargeScreen ? "400px" : "200px",
+          }}
+          src={discountImage}
+          alt="Discount Image"
+          
+        />
 
-      <Box sx={{ padding: "16px" }}>
-        <Box
+        <Typography
+          variant="h6"
+          color="textPrimary"
           sx={{
-            backgroundColor: "#FFEDD5",
-            padding: "16px",
-            borderRadius: "8px",
-            marginBottom: "16px",
+            marginTop: "16px",
+            textAlign: "center",
+            display: "flex",
+            fontSize: { xs: "1em", sm: "1.1em", md: "1.2em" },
           }}
         >
-          <Typography variant="h6" color="textPrimary">
-            Get 20% Discount On First Delivery
+          Get 20% Discount On First{" "}
+          <Typography
+            sx={{
+              color: "#D66400",
+              marginLeft: "8px",
+              padding: "1px",
+              fontSize: { xs: "1em", sm: "1.1em", md: "1em" },
+            }}
+          >
+            Delivery
           </Typography>
-        </Box>
+        </Typography>
+      </Box>
 
+      <Box sx={{ padding: "16px" }}>
         <div
           style={{
             width: "100%",
@@ -246,14 +323,13 @@ const Home = () => {
           }}
         >
           <ToggleButtonGroup
-            color="secondary"
             value={alignment}
             exclusive
             onChange={handleChange}
             aria-label="Category"
             sx={{
               justifyContent: "center",
-              backgroundColor: "#ff6600",
+              backgroundColor: "#fff",
             }}
           >
             <ToggleButton
@@ -261,7 +337,11 @@ const Home = () => {
               onClick={handleFood}
               sx={{
                 backgroundColor: "#fff",
-                color: "#ff6600",
+                color: "#D66400",
+                "&.Mui-selected": {
+                  backgroundColor: "#D66400",
+                  color: "#fff",
+                },
               }}
             >
               Food
@@ -271,7 +351,11 @@ const Home = () => {
               onClick={handleDrink}
               sx={{
                 backgroundColor: "#fff",
-                color: "#ff6600",
+                color: "#D66400",
+                "&.Mui-selected": {
+                  backgroundColor: "#D66400",
+                  color: "#fff",
+                },
               }}
             >
               Drink
@@ -288,14 +372,28 @@ const Home = () => {
           }}
         >
           {itemsType.map((item, index) => (
-            <Typography key={index} sx={{ margin: "10px" }}>
+            <Typography
+              key={index}
+              onClick={() => handleItemTypeClick(item)}
+              sx={{
+                margin: "10px",
+                color: selectedItem === item ? "#D66400" : "inherit",
+                textDecoration: selectedItem === item ? "underline" : "none",
+                transition: "all 0.1s ease",
+                cursor: "pointer",
+              }}
+            >
               {item}
             </Typography>
           ))}
 
-          {/* Display ListIcon only on small screens */}
           {isSmallScreen && (
-            <IconButton>
+            <IconButton
+              onClick={handleItemClick}
+              sx={{
+                color: "#D66400",
+              }}
+            >
               <ListIcon />
             </IconButton>
           )}

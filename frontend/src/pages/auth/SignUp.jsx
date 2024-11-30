@@ -177,7 +177,7 @@ const styles = {
   },
   icon: {
     fontSize: "30px",
-    color: "#ff6600",
+    color: "#D66400",
   },
   title: {
     fontSize: "1.8rem",
@@ -207,7 +207,7 @@ const styles = {
     padding: "10px",
     fontSize: "1rem",
     color: "#fff",
-    backgroundColor: "#ff6600",
+    backgroundColor: "#D66400",
     border: "none",
     borderRadius: "5px",
     cursor: "pointer",
@@ -223,7 +223,7 @@ const styles = {
   signInButton: {
     background: "none",
     border: "none",
-    color: "#ff6600",
+    color: "#D66400 ",
     fontSize: "0.9rem",
     cursor: "pointer",
     textDecoration: "none",

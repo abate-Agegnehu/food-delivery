@@ -87,7 +87,7 @@ const ForgetPasswordForm = () => {
       padding: "10px",
       fontSize: "1rem",
       color: "#fff",
-      backgroundColor: "#ff6600",
+      backgroundColor: "#D66400",
       border: "none",
       borderRadius: "5px",
       cursor: "pointer",
