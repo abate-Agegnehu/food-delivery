@@ -7,22 +7,38 @@ import {
   Typography,
   CardActions,
   IconButton,
-  Box,
-  Avatar,
   CardHeader,
 } from "@mui/material";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import StarIcon from "@mui/icons-material/Star";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import { useTheme } from "@mui/material/styles"; // Import useTheme to detect the current theme
+import { useDarkModeContext } from "../context/DarkModeContext"; // Import the context
 const FoodCard = ({ item }) => {
+  const theme = useTheme(); // Get the current theme
+  const { isDarkMode, toggleDarkMode } = useDarkModeContext(); // Access dark mode state
+
   return (
-    <Grid item xs={12} sm={12} md={12} key={item.id} sx={{ padding: 1 }}>
+    <Grid item xs={12} sm={12} md={12} key={item.id}>
       <Card sx={{ elevation: 3, "&:hover": { boxShadow: 6 } }}>
         <CardHeader
+          sx={{
+            bgcolor: isDarkMode ? "#333" : "#fff",
+            height: "15px",
+          }}
           avatar={
-            <IconButton aria-label="recipe" sx={{ bgcolor: "#fff" }}>
-              <FavoriteBorderIcon sx={{ bgcolor: "#fff", color: "#D66400" }} />
+            <IconButton
+              aria-label="recipe"
+              sx={{
+                bgcolor: isDarkMode ? "#333" : "#fff",
+              }}
+            >
+              <FavoriteBorderIcon
+                sx={{
+                  color: isDarkMode ? "#fff" : "#BA730",
+                }}
+              />
             </IconButton>
           }
         />
@@ -33,7 +49,14 @@ const FoodCard = ({ item }) => {
           image={item.image || "https://via.placeholder.com/150"}
           alt={item.name || "Placeholder"}
         />
-        <CardContent sx={{ display: "flex", justifyContent: "space-between" }}>
+        <CardContent
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            backgroundColor: isDarkMode ? "#333" : "#fff",
+            color: isDarkMode ? "#fff" : "#333",
+          }}
+        >
           <Typography variant="subtitle1" fontWeight="bold">
             {item.name}
           </Typography>
@@ -46,19 +69,20 @@ const FoodCard = ({ item }) => {
           sx={{
             display: "flex",
             justifyContent: "space-between",
+            backgroundColor: isDarkMode ? "#333" : "#fff",
           }}
         >
           <IconButton
             aria-label="delivery time"
             sx={{
-              fontSize: { xs: "12px", sm: "14px", md: "20px" },
+              fontSize: { xs: "13px", sm: "15px", md: "20px" },
+              color: isDarkMode ? "#fff" : "#BA730",
             }}
           >
             <AccessTimeIcon
               sx={{
-                bgcolor: "#fff",
-                color: "#D66400",
-                fontSize: { xs: "12px", sm: "14px", md: "20px" },
+                color: isDarkMode ? "#f1c40f" : "#D66400",
+                fontSize: { xs: "13px", sm: "15px", md: "20px" },
               }}
             />
             {item.deliveryTime}
@@ -68,12 +92,12 @@ const FoodCard = ({ item }) => {
             aria-label="rating"
             sx={{
               fontSize: { xs: "12px", sm: "14px", md: "20px" },
+              color: isDarkMode ? "#fff" : "#333",
             }}
           >
             <StarIcon
               sx={{
-                bgcolor: "#fff",
-                color: "#D66400",
+                color: isDarkMode ? "#f1c40f" : "#D66400", // Icon color for dark mode
                 fontSize: { xs: "12px", sm: "14px", md: "20px" },
               }}
             />
@@ -88,8 +112,7 @@ const FoodCard = ({ item }) => {
           >
             <AddCircleOutlineIcon
               sx={{
-                bgcolor: "#fff",
-                color: "#D66400",
+                color: isDarkMode ? "#f1c40f" : "#D66400", // Icon color for dark mode
                 fontSize: { xs: "12px", sm: "14px", md: "20px" },
               }}
             />

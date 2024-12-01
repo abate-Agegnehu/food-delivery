@@ -29,7 +29,7 @@ const SignUp = () => {
 
       // Redirect to Home page after 3 seconds
       setTimeout(() => {
-        navigate("/home");
+        navigate("/layout");
       }, 3000);
     }
   };

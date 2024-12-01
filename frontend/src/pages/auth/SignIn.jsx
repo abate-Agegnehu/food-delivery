@@ -19,7 +19,7 @@ const SignIn = () => {
       setError("Please fill in both fields.");
     } else {
       setError(""); // Proceed with sign-in logic here
-      navigate("/home")
+      navigate("/layout");
     }
   };
 
