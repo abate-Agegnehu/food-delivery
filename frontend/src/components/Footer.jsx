@@ -35,7 +35,7 @@ const Footer = () => {
           color: isDarkMode ? "#f1c40f" : "#fff",
           border:
             active === "home"
-              ? `2px solid ${isDarkMode ? "#BA7300" : "#fff"}`
+              ? `5px solid ${isDarkMode ? "#BA7300" : "#fff"}`
               : "none",
           borderRadius: "50%",
           padding: "8px",
@@ -50,7 +50,7 @@ const Footer = () => {
           color: isDarkMode ? "#f1c40f" : "#fff",
           border:
             active === "cart"
-              ? `2px solid ${isDarkMode ? "#BA7300" : "#fff"}`
+              ? `5px solid ${isDarkMode ? "#BA7300" : "#fff"}`
               : "none",
           borderRadius: "50%",
           padding: "8px",
@@ -65,7 +65,7 @@ const Footer = () => {
           color: isDarkMode ? "#f1c40f" : "#fff",
           border:
             active === "search"
-              ? `2px solid ${isDarkMode ? "#BA7300" : "#fff"}`
+              ? `5px solid ${isDarkMode ? "#BA7300" : "#fff"}`
               : "none",
           borderRadius: "50%",
           padding: "8px",
@@ -80,7 +80,7 @@ const Footer = () => {
           color: isDarkMode ? "#f1c40f" : "#fff",
           border:
             active === "favorite"
-              ? `2px solid ${isDarkMode ? "#BA7300" : "#fff"}`
+              ? `5px solid ${isDarkMode ? "#BA7300" : "#fff"}`
               : "none",
           borderRadius: "50%",
           padding: "8px",
@@ -95,7 +95,7 @@ const Footer = () => {
           color: isDarkMode ? "#f1c40f" : "#fff",
           border:
             active === "account"
-              ? `2px solid ${isDarkMode ? "#BA7300" : "#fff"}`
+              ? `5px solid ${isDarkMode ? "#BA7300" : "#fff"}`
               : "none",
           borderRadius: "50%",
           padding: "8px",

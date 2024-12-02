@@ -35,8 +35,10 @@ import {
 import FoodCard from "./FoodCard";
 import { useMediaQuery, useTheme } from "@mui/material";
 import { useDarkModeContext } from "../context/DarkModeContext"; // Import the context
+import { useNavigate } from "react-router-dom";
 const Home = () => {
   const theme = useTheme();
+  const navigate = useNavigate();
   const [selectedItem, setSelectedItem] = useState(null);
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const isLargeScreen = useMediaQuery(theme.breakpoints.up("md"));
@@ -69,6 +71,10 @@ const Home = () => {
   const handleItemTypeClick = (item) => {
     setSelectedItem(item);
   };
+  const handleFoodCardClick = (id) => {
+    navigate(`/detail/${id}`);
+  };
+
   const foods = [
     {
       id: 1,
@@ -401,6 +407,7 @@ const Home = () => {
                 flexDirection: "column",
                 height: "100%",
               }}
+              onClick={() => handleFoodCardClick(item.id)}
             >
               <FoodCard
                 item={item}

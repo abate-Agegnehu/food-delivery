@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import MenuIcon from "@mui/icons-material/Menu";
 import InputAdornment from "@mui/material/InputAdornment";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import {
   AppBar,
   Toolbar,
@@ -15,6 +16,7 @@ import {
   TextField,
   Divider,
   Badge,
+  Typography,
 } from "@mui/material";
 import {
   Home as HomeIcon,
@@ -29,6 +31,7 @@ import {
   Reorder as ReorderIcon,
   HelpOutline as HelpOutlineIcon,
   Try as TryIcon,
+  ArrowBack,
 } from "@mui/icons-material";
 import { useDarkModeContext } from "../context/DarkModeContext"; // Import the context
 import { useNavigate } from "react-router-dom";
@@ -68,10 +71,13 @@ const menuItem3 = [
 
 const HomePage = () => {
   const navigate = useNavigate();
-  const { isDarkMode, toggleDarkMode } = useDarkModeContext();
+  const { isDarkMode } = useDarkModeContext();
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [currentContent, setCurrentContent] = useState("home");
+  const [headerTitle, setHeaderTitle] = useState("");
+
   const [notificationCount, setNotificationCount] = useState(3);
+
   const toggleDrawer = () => {
     setDrawerOpen(!drawerOpen);
   };
@@ -130,6 +136,7 @@ const HomePage = () => {
             padding: "0 16px",
           }}
         >
+          {/* Menu Icon */}
           <IconButton
             edge="start"
             sx={{ color: isDarkMode ? "#fff" : "#D66400" }}
@@ -139,40 +146,63 @@ const HomePage = () => {
             <MenuIcon />
           </IconButton>
 
-          <Box
-            sx={{
-              flexGrow: 1,
-              maxWidth: "400px",
-              margin: "0 16px",
-            }}
-          >
-            <TextField
-              placeholder="Search Food"
-              variant="outlined"
-              size="small"
-              fullWidth
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <SearchIcon
-                      sx={{ color: isDarkMode ? "#fff" : "#D66400" }}
-                    />
-                  </InputAdornment>
-                ),
-                style: {
-                  borderRadius: "10px",
-                  backgroundColor: isDarkMode ? "#555" : "#fff",
-                  color: isDarkMode ? "#fff" : "#000",
-                },
-              }}
-            />
-          </Box>
+          {/* Conditionally Render Search Bar and Notification Icon */}
+          {currentContent === "home" && (
+            <>
+              {/* Search Bar */}
+              <Box
+                sx={{
+                  flexGrow: 1,
+                  maxWidth: "400px",
+                  margin: "0 16px",
+                }}
+              >
+                <TextField
+                  placeholder="Search Food"
+                  variant="outlined"
+                  size="small"
+                  fullWidth
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <SearchIcon
+                          sx={{ color: isDarkMode ? "#fff" : "#D66400" }}
+                        />
+                      </InputAdornment>
+                    ),
+                    style: {
+                      borderRadius: "10px",
+                      backgroundColor: isDarkMode ? "#555" : "#fff",
+                      color: isDarkMode ? "#fff" : "#000",
+                    },
+                  }}
+                />
+              </Box>
 
-          <IconButton sx={{ color: isDarkMode ? "#fff" : "#D66400" }}>
-            <Badge badgeContent={notificationCount} color="error">
-              <NotificationsIcon />
-            </Badge>
-          </IconButton>
+              {/* Notification Icon */}
+              <IconButton sx={{ color: isDarkMode ? "#fff" : "#D66400" }}>
+                <Badge badgeContent={notificationCount} color="error">
+                  <NotificationsIcon />
+                </Badge>
+              </IconButton>
+            </>
+          )}
+          {currentContent !== "home" && (
+            <>
+              <ArrowBackIcon
+                sx={{
+                  color: "#333",
+                }}
+              />
+              <Typography
+                sx={{
+                  color: isDarkMode ? "#fff" : "#333",
+                }}
+              >
+                {headerTitle}
+              </Typography>
+            </>
+          )}
         </Toolbar>
       </AppBar>
 
@@ -194,6 +224,7 @@ const HomePage = () => {
                 key={item.text}
                 onClick={() => {
                   setCurrentContent(item.key);
+                  setHeaderTitle(item.text);
                   setDrawerOpen(!drawerOpen);
                 }}
                 sx={{
@@ -217,6 +248,7 @@ const HomePage = () => {
                 key={item.text}
                 onClick={() => {
                   setCurrentContent(item.key);
+                  setHeaderTitle(item.text);
                   setDrawerOpen(!drawerOpen);
                 }}
                 sx={{
@@ -240,6 +272,7 @@ const HomePage = () => {
                 key={item.text}
                 onClick={() => {
                   setCurrentContent(item.key);
+                  setHeaderTitle(item.text);
                   setDrawerOpen(!drawerOpen);
                 }}
                 sx={{
@@ -260,9 +293,7 @@ const HomePage = () => {
         </Box>
       </Drawer>
 
-      <Box sx={{ padding: "16px" }}>
-        {renderContent()} {/* Render the current content */}
-      </Box>
+      <Box sx={{ padding: "16px" }}>{renderContent()}</Box>
       <Footer />
     </div>
   );

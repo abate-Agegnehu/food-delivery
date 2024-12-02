@@ -5,6 +5,7 @@ import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 import NightlightRoundIcon from "@mui/icons-material/NightlightRound";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import burger from "../assets/image/burger.jpg";
+import { Box } from "@mui/material";
 
 const WelcomePage = () => {
   const { isDarkMode, toggleDarkMode } = useDarkModeContext(); // Access dark mode state
@@ -42,9 +43,19 @@ const WelcomePage = () => {
           <span style={styles.highlight}>Food</span> Delivery app
         </p>
       </div>
-      <div style={styles.imageContainer}>
+      <Box
+        sx={{
+          height: {
+            xs: "auto", // For small screens, height is auto
+            sm: "auto", // For medium screens, height is auto
+            md: "310px", // For medium-sized screens, set height to 400px
+            lg: "360px", // For large screens, set height to 450px
+            xl: "410px", // For extra-large screens, set height to 500px
+          },
+        }}
+      >
         <img src={burger} alt="Delicious food" style={styles.image} />
-      </div>
+      </Box>
     </div>
   );
 };
@@ -94,7 +105,7 @@ const styles = {
   iconContainer: {
     display: "flex",
     justifyContent: "flex-end",
-    paddingRight: "20px",
+    padding: "18px 20",
   },
   textContainer: {
     marginBottom: "30px",
@@ -112,13 +123,7 @@ const styles = {
     color: "#FF6600",
     fontWeight: "bold",
   },
-  imageContainer: {
-    height: "60%",
-    display: "flex",
-    width: "100%",
-    justifyContent: "center",
-    alignItems: "center",
-  },
+
   image: {
     height: "100%",
     width: "100%",

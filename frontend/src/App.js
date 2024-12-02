@@ -20,7 +20,7 @@ import MyOrders from "./components/MyOrder";
 import FAQs from "./components/FAQs";
 import UserReviews from "./components/UserReviews";
 import Settings from "./components/Setting";
-
+import Detail from "./components/Detail";
 
 function App() {
   return (
@@ -46,6 +46,7 @@ function App() {
             <Route path="faqs" element={<FAQs />} />
             <Route path="userreviews" element={<UserReviews />} />
             <Route path="settings" element={<Settings />} />
+            <Route path="/detail/:id" element={<Detail />} />
           </Routes>
         </Router>
       </DarkModeProvider>
