@@ -91,7 +91,8 @@ const HomePage = () => {
       case "addresses":
         return <Addresses />;
       case "cart":
-        return <Cart />;
+        navigate("/cart");
+        return;
       case "favorites":
         return <Favorite />;
       case "notification":
