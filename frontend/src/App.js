@@ -21,6 +21,7 @@ import FAQs from "./components/FAQs";
 import UserReviews from "./components/UserReviews";
 import Settings from "./components/Setting";
 import Detail from "./components/Detail";
+import ProfileEdit from "./components/ProfileEdit";
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
             <Route path="userreviews" element={<UserReviews />} />
             <Route path="settings" element={<Settings />} />
             <Route path="/detail/:id" element={<Detail />} />
+            <Route path="/profile/:id" element={<ProfileEdit />} />
           </Routes>
         </Router>
       </DarkModeProvider>
