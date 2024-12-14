@@ -13,13 +13,12 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import StarIcon from "@mui/icons-material/Star";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import { useTheme } from "@mui/material/styles"; // Import useTheme to detect the current theme
-import { useDarkModeContext } from "../context/DarkModeContext"; // Import the context
+import { useTheme } from "@mui/material/styles";
+import { useDarkModeContext } from "../context/DarkModeContext"; 
 
 const FoodCard = ({ item }) => {
-  const theme = useTheme(); // Get the current theme
-  const { isDarkMode, toggleDarkMode } = useDarkModeContext(); // Access dark mode state
-
+  const theme = useTheme(); 
+  const { isDarkMode, toggleDarkMode } = useDarkModeContext(); 
   return (
     <Grid item xs={12} sm={12} md={12} lg={12} key={item.id}>
       <Card
@@ -28,11 +27,11 @@ const FoodCard = ({ item }) => {
           "&:hover": { boxShadow: 6 },
           marginBottom: "4em",
           height: {
-            xs: "auto", // For small screens, height is auto
-            sm: "auto", // For medium screens, height is auto
-            md: "310px", // For medium-sized screens, set height to 400px
-            lg: "360px", // For large screens, set height to 450px
-            xl: "410px", // For extra-large screens, set height to 500px
+            xs: "auto", 
+            sm: "auto", 
+            md: "310px",
+            lg: "360px", 
+            xl: "410px", 
           },
         }}
       >
@@ -111,7 +110,7 @@ const FoodCard = ({ item }) => {
           >
             <StarIcon
               sx={{
-                color: isDarkMode ? "#f1c40f" : "#D66400", // Icon color for dark mode
+                color: isDarkMode ? "#f1c40f" : "#D66400", 
                 fontSize: { xs: "12px", sm: "14px", md: "20px" },
               }}
             />
@@ -126,7 +125,7 @@ const FoodCard = ({ item }) => {
           >
             <AddCircleOutlineIcon
               sx={{
-                color: isDarkMode ? "#f1c40f" : "#D66400", // Icon color for dark mode
+                color: isDarkMode ? "#f1c40f" : "#D66400", 
                 fontSize: { xs: "12px", sm: "14px", md: "20px" },
               }}
             />

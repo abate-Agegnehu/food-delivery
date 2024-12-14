@@ -16,6 +16,7 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import { useNavigate } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import detailImage from "../assets/image/pizza.jpg"
 const Detail = () => {
   const navigate = useNavigate();
   return (
@@ -50,7 +51,7 @@ const Detail = () => {
         <CardMedia
           component="img"
           height="200"
-          image="https://via.placeholder.com/400x200" // Replace with actual image URL
+          image={detailImage}
           alt="Food"
         />
         <IconButton

@@ -34,11 +34,14 @@ import {
 
 import FoodCard from "./FoodCard";
 import { useMediaQuery, useTheme } from "@mui/material";
-import { useDarkModeContext } from "../context/DarkModeContext"; // Import the context
+import { useDarkModeContext } from "../context/DarkModeContext";
 import { useNavigate } from "react-router-dom";
 const Home = () => {
   const theme = useTheme();
   const navigate = useNavigate();
+  const [tempFoods, setTempFoods] = useState([]);
+  const [tempDrinks, setTempDrinks] = useState([]);
+
   const [selectedItem, setSelectedItem] = useState(null);
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const isLargeScreen = useMediaQuery(theme.breakpoints.up("md"));
@@ -46,7 +49,7 @@ const Home = () => {
   const [itemsType, setItemsType] = useState(["Breakfast", "Lunch", "Dinner"]);
   const [alignment, setAlignment] = useState("foods");
   const [isFullWidth, setIsFullWidth] = useState(!isLargeScreen);
-  const { isDarkMode, toggleDarkMode } = useDarkModeContext(); // Access dark mode state
+  const { isDarkMode, toggleDarkMode } = useDarkModeContext();
   const handleChange = (event, newAlignment) => {
     if (newAlignment !== null) {
       setAlignment(newAlignment);
@@ -70,7 +73,18 @@ const Home = () => {
   };
   const handleItemTypeClick = (item) => {
     setSelectedItem(item);
+
+    if (["Breakfast", "Lunch", "Dinner"].includes(item)) {
+      const filteredFoods = foods.filter((food) => food.foodType === item);
+      setItems(filteredFoods);
+    }
+
+    if (["Soft", "Hard"].includes(item)) {
+      const filteredDrinks = drinks.filter((drink) => drink.drinkType === item);
+      setItems(filteredDrinks);
+    }
   };
+
   const handleFoodCardClick = (id) => {
     navigate(`/detail/${id}`);
   };
@@ -81,165 +95,185 @@ const Home = () => {
       name: "Ethio Food",
       price: "$20",
       rating: 4.9,
-      image: ethiofood, // Replace with your image path
+      image: ethiofood,
       deliveryTime: "20 min",
+      foodType: "Breakfast",
     },
     {
       id: 2,
       name: "Breakfast",
       price: "$18",
       rating: 4.8,
-      image: breakfast, // Replace with your image path
+      image: breakfast,
       deliveryTime: "20 min",
+      foodType: "Breakfast",
     },
     {
       id: 3,
       name: "Pasta",
       price: "$15",
       rating: 4.7,
-      image: pasta, // Replace with your image path
+      image: pasta,
       deliveryTime: "25 min",
+      foodType: "Breakfast",
     },
     {
       id: 4,
       name: "Pizza",
       price: "$22",
       rating: 4.6,
-      image: pizza, // Replace with your image path
+      image: pizza,
       deliveryTime: "30 min",
+      foodType: "Breakfast",
     },
     {
       id: 5,
       name: "Burger",
       price: "$12",
       rating: 4.5,
-      image: burger, // Replace with your image path
+      image: burger,
       deliveryTime: "15 min",
+      foodType: "Lunch",
     },
     {
       id: 6,
       name: "Sushi",
       price: "$25",
       rating: 4.8,
-      image: sushi, // Replace with your image path
+      image: sushi,
       deliveryTime: "20 min",
+      foodType: "Lunch",
     },
     {
       id: 7,
       name: "Salad",
       price: "$10",
       rating: 4.3,
-      image: salad, // Replace with your image path
+      image: salad,
       deliveryTime: "10 min",
+      foodType: "Lunch",
     },
     {
       id: 8,
       name: "Sandwich",
       price: "$8",
       rating: 4.4,
-      image: sandwich, // Replace with your image path
+      image: sandwich,
       deliveryTime: "15 min",
+      foodType: "Lunch",
     },
     {
       id: 9,
       name: "Steak",
       price: "$30",
       rating: 4.9,
-      image: steak, // Replace with your image path
+      image: steak,
       deliveryTime: "40 min",
+      foodType: "Dinner",
     },
     {
       id: 10,
       name: "Tacos",
       price: "$13",
       rating: 4.7,
-      image: tacos, // Replace with your image path
+      image: tacos,
       deliveryTime: "20 min",
+      foodType: "Dinner",
     },
   ];
 
   const foodType = ["Breakfast", "Lunch", "Dinner"];
-  const drinkType = ["Soft Drink", "Hard Drink"];
+  const drinkType = ["Soft", "Hard"];
   const drinks = [
     {
       id: 1,
       name: "Macchiato",
       price: "$5",
       rating: 4.9,
-      image: makiato, // Replace with your image path
+      image: makiato,
       deliveryTime: "10 min",
+      drinkType: "Soft",
     },
     {
       id: 2,
       name: "Rum",
       price: "$4",
       rating: 4.8,
-      image: rum, // Replace with your image path
+      image: rum,
       deliveryTime: "12 min",
+      drinkType: "Soft",
     },
     {
       id: 3,
       name: "Latte",
       price: "$6",
       rating: 4.7,
-      image: latte, // Replace with your image path
+      image: latte,
       deliveryTime: "15 min",
+      drinkType: "Soft",
     },
     {
       id: 4,
       name: "Espresso",
       price: "$4",
       rating: 4.6,
-      image: espresso, // Replace with your image path
+      image: espresso,
       deliveryTime: "5 min",
+      drinkType: "Soft",
     },
     {
       id: 5,
       name: "Cappuccino",
       price: "$5",
       rating: 4.8,
-      image: cappuccino, // Replace with your image path
+      image: cappuccino,
       deliveryTime: "10 min",
+      drinkType: "Soft",
     },
     {
       id: 6,
       name: "Iced Tea",
       price: "$3",
       rating: 4.5,
-      image: icedtea, // Replace with your image path
+      image: icedtea,
       deliveryTime: "8 min",
+      drinkType: "Hard",
     },
     {
       id: 7,
       name: "Mojito",
       price: "$7",
       rating: 4.7,
-      image: mojito, // Replace with your image path
+      image: mojito,
       deliveryTime: "15 min",
+      drinkType: "Hard",
     },
     {
       id: 8,
       name: "Lemonade",
       price: "$4",
       rating: 4.6,
-      image: lemonade, // Replace with your image path
+      image: lemonade,
       deliveryTime: "10 min",
+      drinkType: "Hard",
     },
     {
       id: 9,
       name: "Smoothie",
       price: "$6",
       rating: 4.8,
-      image: smoothie, // Replace with your image path
+      image: smoothie,
       deliveryTime: "12 min",
+      drinkType: "Hard",
     },
     {
       id: 10,
       name: "Coconut Water",
       price: "$5",
       rating: 4.4,
-      image: coconutwater, // Replace with your image path
+      image: coconutwater,
       deliveryTime: "10 min",
+      drinkType: "Hard",
     },
   ];
 
