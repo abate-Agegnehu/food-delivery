@@ -1,4 +1,4 @@
-import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
+import { Box, Typography, Avatar } from "@mui/material";
 import React from "react";
 import user from "../assets/image/user.png";
 
@@ -8,52 +8,215 @@ const UserReviews = () => {
       sx={{
         width: "100%",
         display: "flex",
-        flexWrap: "wrap", // Allow wrapping of cards for smaller screens
-        justifyContent: "space-evenly", // Distribute cards evenly
+        flexWrap: "wrap",
+        justifyContent: "space-between",
         padding: 2,
-        marginLeft:"-15px"
       }}
     >
-      {[...Array(4)].map((_, index) => (
-        <Card
-          key={index}
+      <Box
+        sx={{
+          width: "100%",
+          display: "flex",
+          marginBottom: "8px",
+          alignItems: "center",
+          boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+          borderRadius: 2,
+          padding: 2,
+          maxWidth: 400,
+          gap: 2,
+        }}
+      >
+        <Avatar
+          src={user}
+          alt="User review"
           sx={{
-            width: { xs: "90%", sm: "60%", md: "45%" }, // Adjust widths for different screen sizes
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            boxShadow: 3,
-            marginBottom: "15px",
-            borderRadius: 2,
+            width: 50,
+            height: 50,
+            boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
           }}
-        >
-          <CardMedia
-            component="img"
-            height="auto"
-            image={user} // Add image URL here
-            alt="User review"
-            sx={{
-              padding:"10px",
-              width: 100, // Make image width 100px
-              height: 100, // Make image height 100px
-              borderRadius: "50%", // Make the image circular
-              objectFit: "cover", // Ensure the image covers the circle area
-            }}
-          />
-          <CardContent sx={{ textAlign: "center" }}>
-            <Typography variant="h6">Name</Typography>
-          </CardContent>
-          <CardContent sx={{ textAlign: "center" }}>
-            <Typography variant="body2" color="textSecondary">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam
-              amet deleniti nostrum inventore nobis vitae officiis. Blanditiis
-              magni magnam, deserunt, error consequuntur tempora corrupti quia
-              aliquid sunt nulla ab a?
-            </Typography>
-          </CardContent>
-        </Card>
-      ))}
+        />
+        <Box>
+          <Typography
+            variant="body1"
+            sx={{ fontWeight: 600, marginBottom: "2px" }}
+          >
+            Mr Hykes...
+          </Typography>
+          <Typography variant="body2" color="textSecondary">
+            "Great service and tasty food. Love the variety!"
+          </Typography>
+        </Box>
+      </Box>
+      <Box
+        sx={{
+          width: "100%",
+          display: "flex",
+          marginBottom: "8px",
+          alignItems: "center",
+          boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+          borderRadius: 2,
+          padding: 2,
+          maxWidth: 400,
+          gap: 2,
+        }}
+      >
+        <Avatar
+          src={user}
+          alt="User review"
+          sx={{
+            width: 50,
+            height: 50,
+            boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
+          }}
+        />
+        <Box>
+          <Typography
+            variant="body1"
+            sx={{ fontWeight: 600, marginBottom: "2px" }}
+          >
+            Mr Hykes...
+          </Typography>
+          <Typography variant="body2" color="textSecondary">
+            "Great service and tasty food. Love the variety!"
+          </Typography>
+        </Box>
+      </Box>{" "}
+      <Box
+        sx={{
+          width: "100%",
+          display: "flex",
+          marginBottom: "8px",
+          alignItems: "center",
+          boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+          borderRadius: 2,
+          padding: 2,
+          maxWidth: 400,
+          gap: 2,
+        }}
+      >
+        <Avatar
+          src={user}
+          alt="User review"
+          sx={{
+            width: 50,
+            height: 50,
+            boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
+          }}
+        />
+        <Box>
+          <Typography
+            variant="body1"
+            sx={{ fontWeight: 600, marginBottom: "2px" }}
+          >
+            Mr Hykes...
+          </Typography>
+          <Typography variant="body2" color="textSecondary">
+            "Great service and tasty food. Love the variety!"
+          </Typography>
+        </Box>
+      </Box>{" "}
+      <Box
+        sx={{
+          width: "100%",
+          display: "flex",
+          marginBottom: "8px",
+          alignItems: "center",
+          boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+          borderRadius: 2,
+          padding: 2,
+          maxWidth: 400,
+          gap: 2,
+        }}
+      >
+        <Avatar
+          src={user}
+          alt="User review"
+          sx={{
+            width: 50,
+            height: 50,
+            boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
+          }}
+        />
+        <Box>
+          <Typography
+            variant="body1"
+            sx={{ fontWeight: 600, marginBottom: "2px" }}
+          >
+            Mr Hykes...
+          </Typography>
+          <Typography variant="body2" color="textSecondary">
+            "Great service and tasty food. Love the variety!"
+          </Typography>
+        </Box>
+      </Box>{" "}
+      <Box
+        sx={{
+          width: "100%",
+          display: "flex",
+          marginBottom: "8px",
+          alignItems: "center",
+          boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+          borderRadius: 2,
+          padding: 2,
+          maxWidth: 400,
+          gap: 2,
+        }}
+      >
+        <Avatar
+          src={user}
+          alt="User review"
+          sx={{
+            width: 50,
+            height: 50,
+            boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
+          }}
+        />
+        <Box>
+          <Typography
+            variant="body1"
+            sx={{ fontWeight: 600, marginBottom: "2px" }}
+          >
+            Mr Hykes...
+          </Typography>
+          <Typography variant="body2" color="textSecondary">
+            "Great service and tasty food. Love the variety!"
+          </Typography>
+        </Box>
+      </Box>{" "}
+      <Box
+        sx={{
+          width: "100%",
+          display: "flex",
+          marginBottom: "8px",
+          alignItems: "center",
+          boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+          borderRadius: 2,
+          padding: 2,
+          maxWidth: 400,
+          gap: 2,
+        }}
+      >
+        <Avatar
+          src={user}
+          alt="User review"
+          sx={{
+            width: 50,
+            height: 50,
+            boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
+          }}
+        />
+        <Box>
+          <Typography
+            variant="body1"
+            sx={{ fontWeight: 600, marginBottom: "2px" }}
+          >
+            Mr Hykes...
+          </Typography>
+          <Typography variant="body2" color="textSecondary">
+            "Great service and tasty food. Love the variety!"
+          </Typography>
+        </Box>
+      </Box>
     </Box>
   );
 };

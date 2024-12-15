@@ -3,6 +3,9 @@ import SearchIcon from "@mui/icons-material/Search";
 import MenuIcon from "@mui/icons-material/Menu";
 import InputAdornment from "@mui/material/InputAdornment";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+
+
 import {
   AppBar,
   Toolbar,
@@ -17,6 +20,7 @@ import {
   Divider,
   Badge,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
 import {
   Home as HomeIcon,
@@ -31,14 +35,12 @@ import {
   Reorder as ReorderIcon,
   HelpOutline as HelpOutlineIcon,
   Try as TryIcon,
-  ArrowBack,
 } from "@mui/icons-material";
-import { useDarkModeContext } from "../context/DarkModeContext"; // Import the context
+import { useDarkModeContext } from "../context/DarkModeContext"; 
 import { useNavigate } from "react-router-dom";
 import Home from "../components/Home";
 import PersonalInfo from "../components/PersonalInfo";
 import Addresses from "../components/Adresses";
-import Cart from "../components/Cart";
 import Favorite from "../components/Favorite";
 import Notification from "../components/Notification";
 import PaymentMethod from "../components/PaymentMethod";
@@ -46,7 +48,6 @@ import MyOrders from "../components/MyOrder";
 import FAQs from "../components/FAQs";
 import UserReviews from "../components/UserReviews";
 import Settings from "../components/Setting";
-import Footer from "../components/Footer";
 
 const menuItem1 = [
   { text: "Home", key: "home", icon: <HomeIcon /> },
@@ -70,6 +71,12 @@ const menuItem3 = [
 ];
 
 const HomePage = () => {
+
+  const [active, setActive] = useState("home");
+
+  const handleClick = (icon) => {
+    setActive(icon);
+  };
   const navigate = useNavigate();
   const { isDarkMode } = useDarkModeContext();
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -137,7 +144,6 @@ const HomePage = () => {
             padding: "0 16px",
           }}
         >
-          {/* Menu Icon */}
           <IconButton
             edge="start"
             sx={{ color: isDarkMode ? "#fff" : "#D66400" }}
@@ -147,10 +153,8 @@ const HomePage = () => {
             <MenuIcon />
           </IconButton>
 
-          {/* Conditionally Render Search Bar and Notification Icon */}
           {currentContent === "home" && (
             <>
-              {/* Search Bar */}
               <Box
                 sx={{
                   flexGrow: 1,
@@ -180,7 +184,6 @@ const HomePage = () => {
                 />
               </Box>
 
-              {/* Notification Icon */}
               <IconButton sx={{ color: isDarkMode ? "#fff" : "#D66400" }}>
                 <Badge badgeContent={notificationCount} color="error">
                   <NotificationsIcon />
@@ -295,7 +298,115 @@ const HomePage = () => {
       </Drawer>
 
       <Box sx={{ padding: "16px" }}>{renderContent()}</Box>
-      <Footer />
+      <Box  sx={{display:{sx:"visible",md:"none"}}}>
+        <Box
+          sx={{
+            bgcolor: isDarkMode ? "#333" : "#BA7300",
+            position: "fixed",
+            bottom: 0,
+            width: "100%",
+            display: "flex",
+            justifyContent: "space-around",
+            padding: "10px 0",
+            alignItems: "center",
+          }}
+        >
+          <IconButton
+            sx={{
+              color: isDarkMode ? "#f1c40f" : "#fff",
+              border:
+                active === "home"
+                  ? `5px solid ${isDarkMode ? "#BA7300" : "#fff"}`
+                  : "none",
+              borderRadius: "50%",
+              padding: "8px",
+            }}
+            onClick={() => {
+              handleClick("home");
+              setCurrentContent("home");
+              setHeaderTitle("Home");
+            }}
+          >
+            <HomeIcon />
+          </IconButton>
+
+          <IconButton
+            sx={{
+              color: isDarkMode ? "#f1c40f" : "#fff",
+              border:
+                active === "cart"
+                  ? `5px solid ${isDarkMode ? "#BA7300" : "#fff"}`
+                  : "none",
+              borderRadius: "50%",
+              padding: "8px",
+            }}
+            onClick={() => {
+              handleClick("cart");
+              setCurrentContent("cart");
+              setHeaderTitle("Cart");
+            }}
+          >
+            <ShoppingCartIcon />
+          </IconButton>
+
+          <IconButton
+            sx={{
+              color: isDarkMode ? "#f1c40f" : "#fff",
+              border:
+                active === "search"
+                  ? `5px solid ${isDarkMode ? "#BA7300" : "#fff"}`
+                  : "none",
+              borderRadius: "50%",
+              padding: "8px",
+            }}
+            onClick={() => {
+              handleClick("search");
+              setCurrentContent("home"); 
+              setHeaderTitle("Search");
+            }}
+          >
+            <SearchIcon />
+          </IconButton>
+
+          <IconButton
+            sx={{
+              color: isDarkMode ? "#f1c40f" : "#fff",
+              border:
+                active === "favorite"
+                  ? `5px solid ${isDarkMode ? "#BA7300" : "#fff"}`
+                  : "none",
+              borderRadius: "50%",
+              padding: "8px",
+            }}
+            onClick={() => {
+              handleClick("favorite");
+              setCurrentContent("favorites");
+              setHeaderTitle("Favorites");
+            }}
+          >
+            <FavoriteIcon />
+          </IconButton>
+
+          <IconButton
+            sx={{
+              color: isDarkMode ? "#f1c40f" : "#fff",
+              border:
+                active === "account"
+                  ? `5px solid ${isDarkMode ? "#BA7300" : "#fff"}`
+                  : "none",
+              borderRadius: "50%",
+              padding: "8px",
+            }}
+            onClick={() => {
+              handleClick("account");
+              setCurrentContent("personalInfo");
+              setHeaderTitle("Account");
+            }}
+          >
+            <AccountCircleIcon />
+          </IconButton>
+        </Box>
+      </Box>
     </div>
   );
 };
